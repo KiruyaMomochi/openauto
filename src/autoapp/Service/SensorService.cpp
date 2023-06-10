@@ -229,7 +229,7 @@ void SensorService::sensorPolling()
 
             if ((this->gpsEnabled_) &&
                (gps_waiting(&this->gpsData_, 0)) &&
-               (gps_read(&this->gpsData_) > 0) &&
+               (gps_read(&this->gpsData_, nullptr, 0) > 0) &&
                (this->gpsData_.status != STATUS_NO_FIX) &&
                (this->gpsData_.fix.mode == MODE_2D || this->gpsData_.fix.mode == MODE_3D) &&
                (this->gpsData_.set & TIME_SET) &&
