@@ -64,7 +64,6 @@
               ];
 
               postPatch = ''
-                echo 'Copying files...'
                 cp -r ${aasdk}/include/aasdk ./include/f1x/
                 cp -r ${aasdk}/include/aasdk_proto ./include/
               '';
@@ -77,6 +76,12 @@
                 "-DAASDK_PROTO_INCLUDE_DIRS=${aasdk}/include/"
                 "-DAASDK_PROTO_LIBRARIES=${aasdk}/lib/libaasdk_proto.so"
               ];
+
+              installPhase = ''
+                mkdir $out/bin
+                cp bin/autoapp $out/bin/autoapp
+                cp bin/btservice $out/bin/btservice
+              '';
             }
           )
           { inherit aasdk; };
