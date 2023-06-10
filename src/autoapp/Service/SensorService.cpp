@@ -188,7 +188,7 @@ void SensorService::sendGPSLocationData()
     auto * locInd = indication.add_gps_location();
 
     // epoch seconds
-    locInd->set_timestamp(this->gpsData_.fix.time * 1e3);
+    locInd->set_timestamp(this->gpsData_.fix.time.tv_sec * 1000 + this->gpsData_.fix.time.tv_nsec / 1000000L);
     // degrees
     locInd->set_latitude(this->gpsData_.fix.latitude * 1e7);
     locInd->set_longitude(this->gpsData_.fix.longitude * 1e7);
