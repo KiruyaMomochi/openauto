@@ -78,9 +78,9 @@
               ];
 
               installPhase = ''
-                mkdir $out/bin
-                cp bin/autoapp $out/bin/autoapp
-                cp bin/btservice $out/bin/btservice
+                mkdir -p $out/bin
+                cp ../bin/autoapp $out/bin/autoapp
+                cp ../bin/btservice $out/bin/btservice
               '';
             }
           )
